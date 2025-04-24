@@ -9,9 +9,9 @@ from .helpers import DummyStreamsContextManager, tee
 
 
 @pytest.mark.asyncio
-@patch("mcp.client.stdio.stdio_client", return_value=DummyStreamsContextManager())
-@patch("mcp.client.session.ClientSession.initialize", new_callable=AsyncMock, return_value=None)
-@patch("mcp.client.session.ClientSession.list_tools")
+@patch("agents.mcp.server.stdio_client", return_value=DummyStreamsContextManager())
+@patch("agents.mcp.server.ClientSession.initialize", new_callable=AsyncMock, return_value=None)
+@patch("agents.mcp.server.ClientSession.list_tools")
 async def test_server_caching_works(
     mock_list_tools: AsyncMock, mock_initialize: AsyncMock, mock_stdio_client
 ):
